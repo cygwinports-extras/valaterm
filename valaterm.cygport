@@ -1,0 +1,19 @@
+NAME="valaterm"
+VERSION=0.6
+RELEASE=1
+CATEGORY="Gnome Shells"
+SUMMARY="Lightweight GTK+ terminal emulator"
+DESCRIPTION="ValaTerm is a lightweight terminal emulator written in Vala."
+HOMEPAGE="http://gitorious.org/valaterm/valaterm"
+GIT_URI="git://gitorious.org/valaterm/valaterm.git"
+GIT_TAG=${VERSION}
+inherit git waf
+
+WAF=./waf
+
+src_install() {
+	cd ${B}
+	waf_install
+
+	make_desktop_entry valaterm "ValaTerm" utilities-terminal "Utility;TerminalEmulator;GTK"
+}
